@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
@@ -30,18 +30,32 @@ function App() {
     setResult(parseInt(firstNumber) / parseInt(secondNumber));
   };
 
+  useEffect(() => {
+    setSecondNumber(firstNumber);
+  }, [firstNumber]);
+
+  const numbers = () => {
+    const row = [];
+    for (let i = 0; i < 10; i++) {
+      row.push(<button key={i}>{i}</button>);
+    }
+    return row;
+  };
+
   return (
     <>
       <h1>Calculator</h1>
 
       <div>
-        <label for="first_number">First number:</label>
+        <label htmlFor="first_number">First number:</label>
         <input type="number" id="first" onChange={firstNumberChange}></input>
       </div>
       <div>
-        <label for="second_number">Second number:</label>
+        <label htmlFor="second_number">Second number:</label>
         <input type="number" id="second" onChange={secondNumberChange}></input>
       </div>
+
+      <div>{numbers()}</div>
       <button onClick={plus}>PLUS +</button>
       <button onClick={minus}>MINUS -</button>
       <button onClick={multiply}>MULTIPLY *</button>
