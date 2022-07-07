@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Numbers from './Numbers';
+import Display from './Display';
+import Operation from './Operation';
+
 
 function App() {
+  const [numbers, resultNumbers] = useState([])
+
+function computation({prevNum, nextNum, operator}) {
+  const prev = parseFloat()
+} 
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <h1>Calculator</h1>
+    <Display numbers={numbers} />
+    <Numbers />
+    <Operation/>
+    <span>{resultNumbers}</span>
+    </>
   );
 }
 
